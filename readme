@@ -1,0 +1,19 @@
+# Project Stage
+
+Site internet vitrirne
+
+## Pre- requis
+PHP
+Composer
+symfony CLI
+Docker-compose
+
+
+symfony check: requirements
+
+docker-compose up -d
+symfony serve -d
+
+## Lancer des tests
+
+php bin/phpunit --testdox

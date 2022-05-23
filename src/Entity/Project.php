@@ -40,9 +40,13 @@ class Project
     #[ORM\ManyToMany(targetEntity: Categorie::class, inversedBy: 'projects')]
     private $categorie;
 
+    #[ORM\OneToMany(mappedBy: 'project', targetEntity: Commentaire::class)]
+    private $commentaires;
+
     public function __construct()
     {
         $this->categorie = new ArrayCollection();
+        $this->commentaires = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -154,6 +158,36 @@ class Project
     public function removeCategorie(Categorie $categorie): self
     {
         $this->categorie->removeElement($categorie);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Commentaire>
+     */
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function addCommentaire(Commentaire $commentaire): self
+    {
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires[] = $commentaire;
+            $commentaire->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaire $commentaire): self
+    {
+        if ($this->commentaires->removeElement($commentaire)) {
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getProject() === $this) {
+                $commentaire->setProject(null);
+            }
+        }
 
         return $this;
     }

@@ -42,9 +42,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Project::class, orphanRemoval: true)]
     private $projects;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Blogpost::class, orphanRemoval: true)]
+    private $blogposts;
+
     public function __construct()
     {
         $this->projects = new ArrayCollection();
+        $this->blogposts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -189,6 +193,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($project->getUser() === $this) {
                 $project->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Blogpost>
+     */
+    public function getBlogposts(): Collection
+    {
+        return $this->blogposts;
+    }
+
+    public function addBlogpost(Blogpost $blogpost): self
+    {
+        if (!$this->blogposts->contains($blogpost)) {
+            $this->blogposts[] = $blogpost;
+            $blogpost->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBlogpost(Blogpost $blogpost): self
+    {
+        if ($this->blogposts->removeElement($blogpost)) {
+            // set the owning side to null (unless already changed)
+            if ($blogpost->getUser() === $this) {
+                $blogpost->setUser(null);
             }
         }
 
