@@ -10,10 +10,16 @@ Docker-compose
 
 
 symfony check: requirements
-
-docker-compose up -d
+composer require --dev symfony/maker-bundle
+npm i
 symfony serve -d
 
 ## Lancer des tests
-
+composer require --dev symfony/phpunit-bridge
 php bin/phpunit --testdox
+
+
+##GIT
+git add .
+git commit -m "text"
+git push --set-upstream origin main
