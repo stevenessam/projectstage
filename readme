@@ -23,3 +23,7 @@ php bin/phpunit --testdox
 git add .
 git commit -m "text"
 git push --set-upstream origin main
+
+
+##Pagination
+composer require knplabs/knp-paginator-bundle

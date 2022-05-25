@@ -4,7 +4,7 @@
 
 {% block body %}
 
-
+  <main id="main">
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
@@ -38,13 +38,13 @@
         {% for project in projects %}
             <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                 <div class="portfolio-wrap">
-                <img src="img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+                <img src="{{project.file}}" class="img-fluid" alt="">
                 <div class="portfolio-info">
                     <h4> {{project.nom}}</h4>
                     <p>{{project.createdAt|date('d/m/y')}} </p>
                     <div class="portfolio-links">
-                    <a href="img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{project.nom}}"><i class="bx bx-plus"></i></a>
-                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                    <a href="{{project.file}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{project.nom}}"><i class="bx bx-plus"></i></a>
+                    <a href="{{path('app_project_details', {'slug': project.slug})}}" title="More Details"><i class="bx bx-link"></i></a>
                     </div>
                 </div>
                 </div>
@@ -54,6 +54,12 @@
         </div>
 
       </div>
-    </section><!-- End Portfolio Section -->
 
+
+      <div class="d-flex justify-content-center">
+        {% do projects.setPageRange(2) %}
+        {{ knp_pagination_render(projects, 'base/pagination.html.twig') }}
+    </div
+    </section><!-- End Portfolio Section -->
+  </main><!-- End #main -->
 {% endblock %}
