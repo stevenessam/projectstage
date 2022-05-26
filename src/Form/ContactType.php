@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType ;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -20,7 +21,7 @@ class ContactType extends AbstractType
             ->add('nom',TextType::class)
             ->add('email',EmailType::class)
             ->add('message',TextareaType::class)
-            ->add('telephone',TextType::class)
+            ->add('telephone',NumberType ::class)
             ->add('envoyer',SubmitType::class)
         ;
     }
