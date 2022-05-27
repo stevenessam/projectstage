@@ -10,7 +10,7 @@
       <div class="container">
 
         <ol>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="{{path('app_home')}}">Home</a></li>
           <li>Projets</li>
         </ol>
         <h2>Projets</h2>
@@ -38,12 +38,12 @@
         {% for project in projects %}
             <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                 <div class="portfolio-wrap">
-                <img src="{{project.file}}" class="img-fluid" alt="">
+                <img src="{{vich_uploader_asset(project ,'imageFile')}}" class="img-fluid" alt="">
                 <div class="portfolio-info">
                     <h4> {{project.nom}}</h4>
                     <p>{{project.createdAt|date('d/m/y')}} </p>
                     <div class="portfolio-links">
-                    <a href="{{project.file}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{project.nom}}"><i class="bx bx-plus"></i></a>
+                    <a href="{{vich_uploader_asset(project ,'imageFile')}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{project.nom}}"><i class="bx bx-plus"></i></a>
                     <a href="{{path('app_project_details', {'slug': project.slug})}}" title="More Details"><i class="bx bx-link"></i></a>
                     </div>
                 </div>

@@ -3,7 +3,6 @@
 namespace App\Entity\EventSubscriber;
 
 use DateTime;
-use App\Entity\Project;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\String\Slugger\SluggerInterface;
@@ -29,20 +28,20 @@ class EasyAdminSubscriber implements EventSubscriberInterface
         ];
     }
 
-    public function setDateAndUser (BeforeEntityPersistedEvent $event)
-    {
-    
+
+
+
+        public function setDateAndUser(BeforeEntityPersistedEvent $event)
+        {
         $entity = $event->getEntityInstance();
 
-        if (($entity instanceof Project)){
-            $now = new DateTime('now');
-            $entity->setCreatedAt($now);
-            $user = $this->security->getUser();
-            $entity->setUser($user);
-        }
+            if(($entity instanceof Project)){
+                    $now = new DateTime('now');
+                    $entity->setCreatedAt($now);
+                    $user = $this->security->getUser();
+                    $entity->setUser($user);
+            }
+                return;
 
-
-        return;
-
-    }
+                }
 }

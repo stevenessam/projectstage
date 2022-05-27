@@ -19,7 +19,7 @@ class ProjectController extends AbstractController
 
         ): Response {
 
-        $data = $projectRepository->findAll();
+        $data = $projectRepository->findBy([],['id'=>'DESC']);
 
         $projects = $paginator->paginate(
         $data,

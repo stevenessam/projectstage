@@ -2,7 +2,11 @@
 
 namespace App\Controller\Admin;
 
+use DateTime;
 use App\Entity\Project;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Security\Core\Security;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
@@ -31,6 +35,38 @@ class ProjectCrudController extends AbstractCrudController
             SlugField::new('slug')->setTargetFieldName('nom')->hideOnIndex(),
             AssociationField::new('categorie'),
         ];
+    }
+
+
+    private $security;
+    public function __construct (Security $security)
+    {
+    
+
+        $this->security= $security;
+    }
+
+
+    public function persistEntity(EntityManagerInterface $em, $entityInstance): void
+    {
+        if(! $entityInstance instanceof Project) return;
+
+            $now = new DateTime('now');
+            $entityInstance->setCreatedAt($now);
+            
+            $user = $this->security->getUser();
+            $entityInstance->setUser($user);
+
+            parent::persistEntity($em,$entityInstance);
+
+    }
+
+
+
+    public function configureCrud (Crud $crud): Crud
+    {
+    return$crud
+        ->setDefaultSort(['createdAt'=>'DESC']);
     }
     
 }
