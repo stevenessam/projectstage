@@ -8,6 +8,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Security;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use Vich\UploaderBundle\Form\Type\VichImageType;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -66,7 +68,19 @@ class ProjectCrudController extends AbstractCrudController
     public function configureCrud (Crud $crud): Crud
     {
     return$crud
-        ->setDefaultSort(['createdAt'=>'DESC']);
+        ->setDefaultSort(['createdAt'=>'DESC'])
+        ->setPageTitle ( 'index', 'Projets')
+        ->setPageTitle ( 'new', 'Editer les Projets' );
     }
+    
+
+
+    
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            ->add(Crud::PAGE_INDEX,Action::DETAIL);
+    }
+
     
 }

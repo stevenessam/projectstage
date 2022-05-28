@@ -1,0 +1,26 @@
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Commentaires</h2>
+        </div>
+
+        <div class="row">
+        {% for com in commentaires%}
+          <div class="col-lg-6">
+            <div class="testimonial-item mt-4">
+              <h3>{{ com.auteur}}</h3>
+              <h4>{{com.createdAt|date('d/m/y')}}</h4>
+              <p>
+                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    {{ com.contenu}}
+                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+              </p>
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->

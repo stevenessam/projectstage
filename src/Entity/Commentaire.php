@@ -31,6 +31,9 @@ class Commentaire
     #[ORM\ManyToOne(targetEntity: Blogpost::class, inversedBy: 'commentaires')]
     private $blogpost;
 
+    #[ORM\Column(type: 'boolean')]
+    private $isPublished;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +107,18 @@ class Commentaire
     public function setBlogpost(?Blogpost $blogpost): self
     {
         $this->blogpost = $blogpost;
+
+        return $this;
+    }
+
+    public function isIsPublished(): ?bool
+    {
+        return $this->isPublished;
+    }
+
+    public function setIsPublished(bool $isPublished): self
+    {
+        $this->isPublished = $isPublished;
 
         return $this;
     }

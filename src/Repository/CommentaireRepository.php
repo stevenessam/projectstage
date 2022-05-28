@@ -2,11 +2,13 @@
 
 namespace App\Repository;
 
+use App\Entity\Project;
+use App\Entity\Blogpost;
 use App\Entity\Commentaire;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Commentaire>
@@ -47,28 +49,21 @@ class CommentaireRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Commentaire[] Returns an array of Commentaire objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Commentaire
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    public function findCommentaires($value)
+    {
+        if($value instanceof Blogpost){
+            $object='blogpost';
+        }
+        if($value instanceof Project){
+            $object='project';
+        }
+        return $this->createQueryBuilder('c')
+            ->andwhere('c.' . $object .'  =:val')
+            ->andWhere('c.isPublished = true')
+            ->setParameter('val', $value->getId())
+            ->orderBy('c.id','DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }
