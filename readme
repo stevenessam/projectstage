@@ -22,7 +22,7 @@ php bin/phpunit --testdox
 ##GIT
 git add .
 git commit -m "text"
-git push --set-upstream origin main
+git push --set-upstream origin dev
 
 
 ##Pagination
