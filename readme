@@ -11,13 +11,24 @@ Docker-compose
 
 symfony check: requirements
 composer require --dev symfony/maker-bundle
+composer require symfony/webpack-encore-bundle
+doctrine:migrations:version --all --add
 npm i
+npm run build
 symfony serve -d
 
 ## Lancer des tests
 composer require --dev symfony/phpunit-bridge
 php bin/phpunit --testdox
 
+
+
+##DataBase
+php bin/console doctrine:database:create
+php bin/console make:migration
+php bin/console doctrine:migrations:migrate
+php bin/console doctrine:migrations:version --all --add
+php bin/console doctrine:schema:update --force
 
 ##GIT
 git add .
