@@ -66,4 +66,19 @@ class CommentaireRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+    /**
+     *  @return Commentaire[] Returns an array of Blogpost objects
+     */
+    public function lastTree()
+        {
+    return $this->createQueryBuilder('b')
+        ->orderBy('b.id','DESC')
+        ->setMaxResults(3)
+        ->getQuery()
+        ->getResult()
+        ;
+        }
+
+
+
 }
