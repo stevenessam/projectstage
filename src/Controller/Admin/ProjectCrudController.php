@@ -29,13 +29,14 @@ class ProjectCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+            AssociationField::new('categorie'),
             TextField::new('nom'),
             TextareaField::new('description'),
             DateField::new('dateRealisation'),
             TextField::new('imageFile')->setFormType(VichImageType::class)->onlyWhenCreating(),
             ImageField::new('file')->setBasePath('/uploads/projects/')->onlyOnIndex(),
             SlugField::new('slug')->setTargetFieldName('nom')->hideOnIndex(),
-            AssociationField::new('categorie'),
+
         ];
     }
 

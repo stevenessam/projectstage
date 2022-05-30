@@ -6,6 +6,7 @@ use App\Entity\Commentaire;
 use App\Form\CommentaireType;
 use App\Service\CommentaireService;
 use App\Repository\ProjectRepository;
+use App\Repository\CategorieRepository;
 use App\Repository\CommentaireRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,8 +20,8 @@ class ProjectController extends AbstractController
     public function index(
         ProjectRepository $projectRepository,
         PaginatorInterface $paginator,
-        Request $request
-
+        Request $request,
+        CategorieRepository $categorieRepository,
         ): Response {
 
         $data = $projectRepository->findBy([],['id'=>'DESC']);
@@ -31,8 +32,12 @@ class ProjectController extends AbstractController
         9
         );
 
+        $categorieisNames = $categorieRepository->findAll();
+        $categories = $categorieisNames;
+
         return $this->render('project/project.html.twig', [
             'projects' => $projects ,
+            'categorieisNames' => $categorieisNames,
         ]);
     }
     

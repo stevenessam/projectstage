@@ -37,7 +37,7 @@
             <div class="info-box mb-4">
               <i class="bx bx-map"></i>
               <h3>Our Address</h3>
-              <p>A108 Adam Street, New York, NY 535022</p>
+              <p>70 Av. de la Division Leclerc 93700 Drancy</p>
             </div>
           </div>
 
@@ -53,7 +53,7 @@
             <div class="info-box  mb-4">
               <i class="bx bx-phone-call"></i>
               <h3>Call Us</h3>
-              <p>+1 5589 55488 55</p>
+              <p>+33  07.51.21.89.00</p>
             </div>
           </div>
 
@@ -62,23 +62,27 @@
         <div class="row">
 
           <div class="col-lg-6 ">
-            <iframe class="mb-4 mb-lg-0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
+            <iframe class="mb-4 mb-lg-0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2620.9514988915516!2d2.4521717!3d48.9353656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66b581b70d88d%3A0x993abaf9a0b52b08!2s70%20Av.%20de%20la%20Division%20Leclerc%2C%2093700%20Drancy!5e0!3m2!1sen!2sfr!4v1653848235434!5m2!1sen!2sfr" frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
           </div>
 
           <div class="col-lg-6">
             {{form_start(form)}}
               <div class="row">
                 <div class="col-md-6 form-group">
+                <label><h5>Nom</h5></label><br>
                   {{form_widget(form.nom)}} 
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
+                 <label><h5>Telephone</h5></label><br>
                    {{form_widget(form.telephone)}}
                 </div>
               </div>
               <div class="form-group mt-3">
+              <label><h5>Email</h5></label><br>
                 {{form_widget(form.email)}}
               </div>
               <div class="form-group mt-3" >
+              <label><h5>Message</h5></label><br>
                 {{form_widget(form.message)}}
               </div>
               <div class="my-3">
