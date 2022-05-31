@@ -39,7 +39,7 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item 
               {% for categorie in categorieisNames %}
-                  {% if categorie.slug in project.description or categorie.nom in project.description  %}
+                  {% if categorie.slug|slice(0, 4) in project.description or categorie.nom|slice(0, 4) in project.description or categorie.slug|slice(0, 4) in project.nom or categorie.nom|slice(0, 4) in project.nom  %}
                       filter-{{categorie.slug}}
                   {% endif %}
               {% endfor %}
