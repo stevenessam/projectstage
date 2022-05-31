@@ -36,7 +36,14 @@
         <div class="row portfolio-container">
 
         {% for project in projects %}
-            <div class="col-lg-4 col-md-6 portfolio-item filter-{{project.slug|split('-')[0]}} ">
+
+            <div class="col-lg-4 col-md-6 portfolio-item 
+              {% for categorie in categorieisNames %}
+                  {% if categorie.slug in project.description or categorie.nom in project.description  %}
+                      filter-{{categorie.slug}}
+                  {% endif %}
+              {% endfor %}
+             ">
                 <div class="portfolio-wrap">
                 <img src="{{vich_uploader_asset(project ,'imageFile')}}" class="img-fluid" alt="">
                 <div class="portfolio-info">

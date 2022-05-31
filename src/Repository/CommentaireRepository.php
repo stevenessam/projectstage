@@ -73,7 +73,7 @@ class CommentaireRepository extends ServiceEntityRepository
         {
     return $this->createQueryBuilder('b')
         ->orderBy('b.id','DESC')
-        ->setMaxResults(3)
+        ->setMaxResults(4)
         ->getQuery()
         ->getResult()
         ;
