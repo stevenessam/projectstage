@@ -28,17 +28,29 @@ class ProjectCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        return [
-            AssociationField::new('categorie'),
+
+        $imageFile1= TextField::new('imageFile')->setFormType(VichImageType::class);
+        $image1=ImageField::new('file')->setBasePath('/uploads/projects/');
+        $imageFile2= TextField::new('imageFile2')->setFormType(VichImageType::class);
+        $image2=ImageField::new('file2')->setBasePath('/uploads/projects/');
+        $fields=[
             TextField::new('nom'),
+            AssociationField::new('categorie'),
             TextareaField::new('description'),
             DateField::new('dateRealisation'),
-            TextField::new('imageFile')->setFormType(VichImageType::class)->onlyWhenCreating(),
-            ImageField::new('file')->setBasePath('/uploads/projects/')->onlyOnIndex(),
             SlugField::new('slug')->setTargetFieldName('nom')->hideOnIndex(),
-
         ];
+        if($pageName==Crud::PAGE_INDEX || $pageName == Crud::PAGE_DETAIL){
+             $fields[]=$image1;
+             $fields[]=$image2;
+        }else{
+             $fields[]=$imageFile1;
+             $fields[]=$imageFile2;
+        }
+        return $fields;
     }
+
+
 
 
     private $security;

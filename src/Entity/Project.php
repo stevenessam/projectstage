@@ -27,7 +27,7 @@ class Project
     #[ORM\Column(type: 'string', length: 255)]
     private $nom;
 
-    #[ORM\Column(type: 'datetime', nullable: true)]
+    #[ORM\Column(type: 'datetime')]
     private $dateRealisation;
 
     #[ORM\Column(type: 'datetime')]
@@ -42,12 +42,25 @@ class Project
     #[ORM\Column(type: 'string', length: 255)]
     private $file;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $file2;
+
     /**
      * @Vich\UploadableField(mapping="project_images", fileNameProperty="file")
      * @var File
      */
     #[Vich\UploadableField(mapping: 'project_images', fileNameProperty: 'file')]
     private $imageFile;
+
+
+
+    /**
+     * @Vich\UploadableField(mapping="project_images2", fileNameProperty="file2")
+     * @var File
+     */
+    #[Vich\UploadableField(mapping: 'project_images2', fileNameProperty: 'file2')]
+    private $imageFile2;
+
 
 
 
@@ -145,6 +158,19 @@ class Project
     }
 
 
+    public function getFile2(): ?string
+    {
+        return $this->file2;
+    }
+
+    public function setFile2(string $file2): self
+    {
+        $this->file2 = $file2;
+
+        return $this;
+    }
+
+
     public function setImageFile(File $file = null)
     {
         $this->imageFile = $file;
@@ -158,12 +184,31 @@ class Project
         }
     }
 
+
     public function getImageFile()
     {
         return $this->imageFile;
     }
 
 
+
+    public function getImageFile2()
+    {
+        return $this->imageFile2;
+    }
+
+    public function setImageFile2(File $file2 = null)
+    {
+        $this->imageFile2 = $file2;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($file2) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->createdAt = new \DateTime('now');
+        }
+    }
 
 
 
