@@ -74,6 +74,9 @@ class Project
     #[ORM\OneToMany(mappedBy: 'project', targetEntity: Commentaire::class)]
     private $commentaires;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $dureeDeProjet;
+
     public function __construct()
     {
         $this->categorie = new ArrayCollection();
@@ -283,6 +286,18 @@ class Project
     public function __toString()
     {
         return $this->nom;
+    }
+
+    public function getDureeDeProjet(): ?string
+    {
+        return $this->dureeDeProjet;
+    }
+
+    public function setDureeDeProjet(string $dureeDeProjet): self
+    {
+        $this->dureeDeProjet = $dureeDeProjet;
+
+        return $this;
     }
 
 }

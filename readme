@@ -12,7 +12,6 @@ Docker-compose
 symfony check: requirements
 composer require --dev symfony/maker-bundle
 composer require symfony/webpack-encore-bundle
-doctrine:migrations:version --all --add
 npm i
 npm run build
 symfony serve -d
