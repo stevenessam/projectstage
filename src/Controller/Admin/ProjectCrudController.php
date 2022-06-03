@@ -38,7 +38,7 @@ class ProjectCrudController extends AbstractCrudController
             AssociationField::new('categorie'),
             TextareaField::new('description'),
             DateField::new('dateRealisation'),
-            DateField::new('dureeDeProjet'),
+            TextField::new('dureeDeProjet'),
             SlugField::new('slug')->setTargetFieldName('nom')->hideOnIndex(),
         ];
         if($pageName==Crud::PAGE_INDEX || $pageName == Crud::PAGE_DETAIL){

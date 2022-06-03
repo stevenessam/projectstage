@@ -34,7 +34,7 @@ class ContactCrudController extends AbstractCrudController
     {
         return $actions
             ->add(Crud::PAGE_INDEX,Action::DETAIL)
-            ->disable(Action::DELETE,Action::NEW);
+            ->disable(Action::EDIT,Action::NEW);
     }
     
 }

@@ -26,15 +26,12 @@
         {% for categorie in categorieType %}
           <div class="col box">
 
-            <h4>{{categorie.nom}}</h4>
+            <a href="{{path('app_project')}}"><h4>{{categorie.nom}}</h4></a>
             <ul>
               <li><i class="bx bx-check"></i> {{categorie.description}}</li>
-              <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
-              <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
-              <li><i class="bx bx-x"></i> <span>Pharetra massa massa ultricies</span></li>
-              <li><i class="bx bx-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
             </ul>
-            <a href="{{path('app_project')}}" class="buy-btn">Buy Now</a>
+            <div></div>
+            
           </div>
         {% endfor %}
         </div>
