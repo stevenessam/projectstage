@@ -13,7 +13,7 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
+use Symfony\Component\HttpFoundation\Session\Session;
 class ContactController extends AbstractController
 {
     #[Route('/contact', name: 'app_contact')]
@@ -21,7 +21,7 @@ class ContactController extends AbstractController
     {
 
         //ContactService $contactService,
-
+        $session = new Session();
         $contact = new Contact();
         $form = $this->createForm(ContactType::class,$contact);
         $form->handleRequest($request);
@@ -50,7 +50,7 @@ class ContactController extends AbstractController
             ]);
         $mailer->send($email);
 
-
+        $session->getFlashBag()->add('success', 'Votre message a été envoyé avec succès, Merci');
 
             return $this->redirectToRoute('app_contact');
 

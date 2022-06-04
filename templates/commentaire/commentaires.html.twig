@@ -5,7 +5,11 @@
         <div class="section-title">
           <h2>Commentaires</h2>
         </div>
-
+          {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                  {{message}}
+              </div>
+          {% endfor %}
         <div class="row">
         {% for com in commentaires%}
           <div class="col-lg-6">

@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello ContactController!{% endblock %}
-
+{# 
 {% block javascripts %}
         <script type="text/javascript">
       
@@ -11,9 +11,10 @@
      
         </script>
 
-{% endblock %}
+{% endblock %} #}
 {% block body %}
 <main id="main">
+
 
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
@@ -67,6 +68,11 @@
 
           <div class="col-lg-6">
             {{form_start(form)}}
+                {% for message in app.flashes('success') %}
+                  <div class="alert alert-success">
+                      {{message}}
+                  </div>
+              {% endfor %}
               <div class="row">
                 <div class="col-md-6 form-group">
                 <label><h5>Nom</h5></label><br>

@@ -8,7 +8,7 @@ use App\Entity\Commentaire;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
-
+use Symfony\Component\HttpFoundation\Session\Session;
 class CommentaireService
 {
     private $manager;
@@ -24,6 +24,7 @@ class CommentaireService
         Blogpost $blogpost=null,
         Project $project=null
     ): void {
+        $session = new Session();
         $commentaire->setIsPublished(false)
                     ->setBlogpost($blogpost)
                     ->setProject($project)
@@ -31,7 +32,7 @@ class CommentaireService
 
         $this->manager->persist($commentaire);
         $this->manager->flush();
-        
+        $session->getFlashBag()->add('success', 'Votre commentaire a été envoyé avec succès, Merci');
 
         }
 }
