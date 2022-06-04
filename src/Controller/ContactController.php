@@ -5,12 +5,14 @@ namespace App\Controller;
 use App\Entity\Contact;
 use App\Form\ContactType;
 use App\Service\ContactService;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Mime\Email;
+use Symfony\Component\Mime\Address;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ContactController extends AbstractController
 {
@@ -29,17 +31,23 @@ class ContactController extends AbstractController
             // $contactService->persistContact($contact);
 
 
-            $email = (new Email())
-            ->from('stevenessamlegion@hotmail.com')
+            $email = (new TemplatedEmail())
+            ->from(new Address('stevenessamlegion@hotmail.com', 'H.M.S RENOV'))
             ->to('manobalotalos@gmail.com')
             //->cc('cc@example.com')
             //->bcc('bcc@example.com')
             //->replyTo('fabien@example.com')
             //->priority(Email::PRIORITY_HIGH)
-            ->subject('Time for Symfony Mailer!')
+            ->subject('Vous avez reçu une nouvelle demande de devis')
+            ->htmlTemplate('contact/mail_devis.html.twig')
             //->text('Sending emails is fun again!')
-            ->html('<p>See Twig integration for better HTML integration!</p>');
-
+          //  ->html('<p>See Twig integration for better HTML integration!</p>');
+            ->context([
+                'nom'=>$form->get('nom')->getData(),
+                'telephone'=>$form->get('telephone')->getData(),
+                'emailAddr'=>$form->get('email')->getData(),
+                'message'=>$form->get('message')->getData(),
+            ]);
         $mailer->send($email);
 
 

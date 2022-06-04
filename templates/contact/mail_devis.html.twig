@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+font-size: 26px;
+    padding: 0 0 0 8px;
+    margin-left: 30px;
+    margin-top: 35px;
+    text-transform: uppercase;
+    font-family: "Poppins", sans-serif;
+    border-left: 8px solid #e96b56;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+  float: left;
+  width: 30%;
+  height: 200px; /* only for demonstration, should be removed */
+  background: #ccc;
+  padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+article {
+  float: left;
+  padding: 20px;
+  width: 100%;
+  background-color: #f1f1f1;
+
+ /* only for demonstration, should be removed */
+}
+
+/* Clear floats after the columns */
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+  
+}
+
+section{
+
+    border-top: 5px solid;
+    border-bottom: 5px solid;
+}
+
+
+label{
+font-size: 20px;
+    font-weight: bold;
+}
+
+p{font-size: 16px;}
+</style>
+</head>
+<body>
+
+<header>
+  <h2>H.M.S RENOV</h2>
+</header>
+
+<section>
+
+  <article>
+  <label>Nom : </label>
+    <p>{{ nom }}</p>
+     <label>Telephone : </label>
+    <p>{{ telephone }}</p>
+   <label>Email : </label>
+    <p>{{ emailAddr }}</p>
+    <hr>
+    <label>Message : </label>
+    <p>{{ message }} </p>
+</article>
+</section>
+
+
+
+</body>
+</html>
+
