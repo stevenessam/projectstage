@@ -14,6 +14,7 @@ class AProposController extends AbstractController
     {
         return $this->render('a_propos/index.html.twig', [
             'commentaires' => $commentaireRepository->lastTree(),
+            'titre' => 'A Propos',
         ]);
     }
 }
