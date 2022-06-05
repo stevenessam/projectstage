@@ -13,10 +13,10 @@
                   {{message}}
               </div>
           {% endfor %}
-        <div class="row">
+        <div class="row  justify-content-center">
         {% for com in commentaires%}
-          <div class="col-lg-6">
-            <div class="testimonial-item mt-4">
+          <div class="col-lg-7">
+            <div class="testimonial-item mt-4" >
               <h3>{{ com.auteur}}</h3>
               <h4>{{com.createdAt|date('d/m/y')}}</h4>
               <p>
