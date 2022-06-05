@@ -1,17 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{{titre}}{% endblock %}
-{# 
-{% block javascripts %}
-        <script type="text/javascript">
-      
-            function showMessage() {
-                alert("Vote message est bien envoyé, Merci");
-            }
-     
-        </script>
 
-{% endblock %} #}
 {% block body %}
 <main id="main">
 
@@ -21,7 +11,7 @@
       <div class="container">
 
         <ol>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="{{path('app_home')}}">Accueil</a></li>
           <li>Contact</li>
         </ol>
         <h2>Contact</h2>
@@ -95,7 +85,7 @@
                 <div class="error-message">{{ form_errors(form)}}</div>
               <div class="sent-message" ><h1 id="messageJS"></h1></div>  
               </div>
-              <div class="text-center" onClick="showMessage()">{{form_widget(form.envoyer)}}</div>
+              <div>{{form_widget(form.envoyer)}}</div>
             {{form_end(form)}}
           </div>
 
