@@ -77,6 +77,15 @@ class Project
     #[ORM\Column(type: 'string', length: 255)]
     private $dureeDeProjet;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $typeDeProjet;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $qualiteDuMateriel;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $ville;
+
     public function __construct()
     {
         $this->categorie = new ArrayCollection();
@@ -296,6 +305,42 @@ class Project
     public function setDureeDeProjet(string $dureeDeProjet): self
     {
         $this->dureeDeProjet = $dureeDeProjet;
+
+        return $this;
+    }
+
+    public function getTypeDeProjet(): ?string
+    {
+        return $this->typeDeProjet;
+    }
+
+    public function setTypeDeProjet(string $typeDeProjet): self
+    {
+        $this->typeDeProjet = $typeDeProjet;
+
+        return $this;
+    }
+
+    public function getQualiteDuMateriel(): ?string
+    {
+        return $this->qualiteDuMateriel;
+    }
+
+    public function setQualiteDuMateriel(string $qualiteDuMateriel): self
+    {
+        $this->qualiteDuMateriel = $qualiteDuMateriel;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): self
+    {
+        $this->ville = $ville;
 
         return $this;
     }

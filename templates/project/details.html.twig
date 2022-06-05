@@ -46,10 +46,12 @@
                 <div class="portfolio-info">
                 <h3>Project information</h3>
                 <ul>
-                    <li><strong>Titre</strong>: {{project.nom}}</li>
-                    <li><strong>Durée du projet</strong>: {{project.dureeDeProjet}}</li>
-                    <li><strong>Date du Projet</strong>: {{project.dateRealisation|date('d/m/y')}} </li>
-                    
+                    <li><strong>Titre</strong>: {{project.nom}}</li><hr>
+                    <li><strong>Type De Projet</strong>: {{project.typeDeProjet}}</li><hr>
+                    <li><strong>Qualité Du Matériel</strong>: {{project.qualiteDuMateriel}}</li><hr>
+                    <li><strong>Durée du projet</strong>: {{project.dureeDeProjet}}</li><hr>
+                    <li><strong>Date De Réalisation</strong>: {{project.dateRealisation|date('d/m/y')}} </li><hr>
+                    <li><strong>Ville</strong>: {{project.ville}}</li>
                 </ul>
                 </div>
             

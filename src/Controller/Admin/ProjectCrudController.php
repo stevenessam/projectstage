@@ -35,10 +35,13 @@ class ProjectCrudController extends AbstractCrudController
         $image2=ImageField::new('file2')->setBasePath('/uploads/projects/');
         $fields=[
             TextField::new('nom'),
-            AssociationField::new('categorie'),
-            TextareaField::new('description'),
+            AssociationField::new('categorie')->hideOnIndex(),
+            TextareaField::new('description')->hideOnIndex(),
+            TextField::new('typeDeProjet'),
+            TextField::new('qualiteDuMateriel')->hideOnIndex(),
+            TextField::new('dureeDeProjet')->hideOnIndex(),
             DateField::new('dateRealisation'),
-            TextField::new('dureeDeProjet'),
+            TextField::new('ville'),
             SlugField::new('slug')->setTargetFieldName('nom')->hideOnIndex(),
         ];
         if($pageName==Crud::PAGE_INDEX || $pageName == Crud::PAGE_DETAIL){
