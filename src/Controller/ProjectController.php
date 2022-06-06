@@ -38,7 +38,7 @@ class ProjectController extends AbstractController
         return $this->render('project/project.html.twig', [
             'projects' => $projects ,
             'categorieisNames' => $categorieisNames,
-            'titre' => 'Realisations',
+            'titre' => 'Realisations - H.M.S RENOV',
         ]);
     }
     

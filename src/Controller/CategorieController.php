@@ -19,7 +19,7 @@ class CategorieController extends AbstractController
 
         return $this->render('categorie/index.html.twig', [
             'categorieType' => $categorieType,
-            'titre' => 'Categories',
+            'titre' => 'Categories - H.M.S RENOV',
         ]);
     }
 }

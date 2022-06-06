@@ -17,31 +17,23 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class ContactController extends AbstractController
 {
     #[Route('/contact', name: 'app_contact')]
-    public function index(Request $request, MailerInterface $mailer): Response
+    public function index(Request $request, ContactService $contactService, MailerInterface $mailer): Response
     {
 
-        //ContactService $contactService,
+        
         $session = new Session();
         $contact = new Contact();
         $form = $this->createForm(ContactType::class,$contact);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            // $contact = $form->getData();
-            // $contactService->persistContact($contact);
-
-
+            $contact = $form->getData();
+            $contactService->persistContact($contact);
             $email = (new TemplatedEmail())
             ->from(new Address('stevenessamlegion@hotmail.com', 'H.M.S RENOV'))
             ->to('manobalotalos@gmail.com')
-            //->cc('cc@example.com')
-            //->bcc('bcc@example.com')
-            //->replyTo('fabien@example.com')
-            //->priority(Email::PRIORITY_HIGH)
             ->subject('Vous avez reçu une nouvelle demande de devis')
             ->htmlTemplate('contact/mail_devis.html.twig')
-            //->text('Sending emails is fun again!')
-          //  ->html('<p>See Twig integration for better HTML integration!</p>');
             ->context([
                 'nom'=>$form->get('nom')->getData(),
                 'telephone'=>$form->get('telephone')->getData(),
@@ -58,7 +50,7 @@ class ContactController extends AbstractController
 
         return $this->render('contact/index.html.twig', [
             'form' => $form->createView(),
-            'titre' => 'Contact',
+            'titre' => 'Contact - H.M.S RENOV',
         ]);
     }
 }
