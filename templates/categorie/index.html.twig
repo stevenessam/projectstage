@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{titre}}{% endblock %}
+
+{% block body %}
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{{path('app_home')}}">Accueil</a></li>
+          <li>Categories</li>
+        </ol>
+        <h2>Categories</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing">
+      <div class="container">
+
+        <div class="row no-gutters">
+        {% for categorie in categorieType %}
+          <div class="col box">
+
+            <a href="{{path('app_project')}}"><h4>{{categorie.nom}}</h4></a>
+            <ul>
+              <li><i class="bx bx-check"></i> {{categorie.description}}</li>
+            </ul>
+            <div></div>
+            
+          </div>
+        {% endfor %}
+        </div>
+
+      </div>
+    </section><!-- End Pricing Section -->
+
+  </main><!-- End #main -->
+
+{% endblock %}

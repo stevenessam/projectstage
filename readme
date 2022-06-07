@@ -1,0 +1,42 @@
+# Project Stage
+
+Site internet vitrirne
+
+## Pre- requis
+PHP
+Composer
+symfony CLI
+Docker-compose
+
+
+symfony check: requirements
+composer require --dev symfony/maker-bundle
+composer require symfony/webpack-encore-bundle
+npm i
+npm run build
+symfony serve -d
+
+## Lancer des tests
+composer require --dev symfony/phpunit-bridge
+php bin/phpunit --testdox
+
+
+
+##DataBase
+php bin/console doctrine:database:create
+php bin/console make:migration
+php bin/console doctrine:migrations:migrate
+php bin/console doctrine:migrations:version --all --add
+php bin/console doctrine:schema:update --force
+
+##GIT
+git add .
+git commit -m "text"
+git push --set-upstream origin dev
+
+
+##Pagination
+composer require knplabs/knp-paginator-bundle
+
+##Easy admin
+composer require easycorp/easyadmin-bundle

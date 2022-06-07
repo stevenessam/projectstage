@@ -1,0 +1,333 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{titre}}{% endblock %}
+
+{% block body %}
+ <main id="main">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/features/">
+
+    
+
+    
+
+<link href="/docs/5.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <!-- Favicons -->
+<link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/5.2/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+<link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">
+<meta name="theme-color" content="#712cf9">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="bootstrap" viewBox="0 0 118 94">
+    <title>Bootstrap</title>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"></path>
+  </symbol>
+  <symbol id="home" viewBox="0 0 16 16">
+    <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
+  </symbol>
+
+  <symbol id="tools" viewBox="0 0 16 16">
+    <path d="M1 0L0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z"/>
+  </symbol>
+
+    <symbol id="calendar3" viewBox="0 0 16 16">
+    <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
+    <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+  </symbol>
+
+    <symbol id="geo-fill" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.319 1.319 0 0 0-.37.265.301.301 0 0 0-.057.09V14l.002.008a.147.147 0 0 0 .016.033.617.617 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.619.619 0 0 0 .146-.15.148.148 0 0 0 .015-.033L12 14v-.004a.301.301 0 0 0-.057-.09 1.318 1.318 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465-1.281 0-2.462-.172-3.34-.465-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411z"/>
+  </symbol>
+
+</svg>
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{{path('app_home')}}">Accueil</a></li>
+          <li>A Propos</li>
+        </ol>
+        <h2>A Propos</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-6 pt-4 pt-lg-0 content">
+            <h3>APPRENEZ À NOUS CONNAÎTRE</h3>
+            <p class="fst-italic">
+             H.M.S RENOV est une entreprise spécialisée tous corps d’état du bâtiment (démolition, maçonnerie, carrelage, plomberie, chauffage, électricité, menuiserie sur mesure, peinture, remplacement de fenêtres) qui saura vous accompagner dès notre 1ère rencontre jusqu’à la fin de votre projet.
+            </p>
+
+            <p>
+Nous sommes une équipe de professionnels certifiés et nous pouvons tout prendre en charge, du gros œuvre aux opérations les plus simples. Portés par notre envie de perfection, nous faisons tout pour que nos clients soient entièrement satisfaits de notre travail.
+            </p>
+
+                        <ul>
+              <li><i class="bi bi-check-circle"></i> PROXIMITÉ</li>
+              <li><i class="bi bi-check-circle"></i> QUALITÉ</li>
+              <li><i class="bi bi-check-circle"></i> RÉACTIVITÉ</li>
+            </ul>
+          </div>
+                    <div class="col-lg-6">
+            <img src="img/about2.jpg" style="border-radius: 3%;" class="img-fluid" alt="">
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+
+
+
+    <!-- ======= Counts Section ======= -->
+ 
+    <section id="counts" class="counts ">
+      <div class="container">
+              <div class="section-title">
+          <h2>Nous vous aidons tout au long de votre projet de rénovation</h2>
+        </div>
+
+
+        <div class="row no-gutters">
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+            <div class="count-box">
+              <i class="bi bi-emoji-smile"></i>
+              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>CONSEIL</strong> Définition de vos attentes et de vos besoins</p>
+
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+            <div class="count-box">
+              <i class="bi bi-receipt"></i>
+              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>DIAGNOSTIC</strong> Diagnostic et définition d’un programme de travaux</p>
+
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+            <div class="count-box">
+              <i class="bi bi-currency-euro"></i>
+              <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>FINANCEMENT</strong> Plan de financement du projet</p>
+
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+            <div class="count-box">
+              <i class="bi bi-cone-striped"></i>
+              <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>TRAVAUX</strong> Mise en relation avec des entreprises locales</p>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+    <section id="about" class="about">
+      <div class="container ">
+
+        <div class="row justify-content-center">
+
+          <div class="col-10 pt-4 pt-lg-0 content">
+               <div class="section-title">
+          <h2>POURQUOI CHOISIR H.M.S RENOV ?</h2>
+        </div>
+            <p class="fst-italic">
+           Avec plus de 10 ans d’expérience et un réel besoin de satisfaire le client, vous pouvez compter sur nous pour votre prochain projet. Nous fournissons des services professionnels de construction, de rénovation et d’installation.
+            </p>
+
+            <ul>
+              <li><i class="bi bi-check-circle"></i> DEVIS CLE EN MAIN RAPIDE ET GRATUIT</li>
+              <li><i class="bi bi-check-circle"></i> RESPECT DES DELAIS ET TARIFS ANNONCES</li>
+              <li><i class="bi bi-check-circle"></i> INTERLOCUTEUR UNIQUE POUR TOUT LE PROJET (DE LA DEMANDE DE DEVIS A LA FACTURATION)</li>
+               <li><i class="bi bi-check-circle"></i> UN RESPONSABLE TECHNIQUE SUR LES CHANTIERS QUI SAURA REPONDRE A VOS INTERROGATIONS</li>
+              <li><i class="bi bi-check-circle"></i> UN PERSONNEL EXPÉRIMENTÉ ET QUALIFIÉ</li>
+                <li><i class="bi bi-check-circle"></i> UN SAV RAPIDE ET EFFICACE</li>
+              <li><i class="bi bi-check-circle"></i> DES FOURNISSEURS ET FABRICANTS DE QUALITE</li>
+                <li><i class="bi bi-check-circle"></i> RESPECT DES NORMES ET DE L’ENVIRONNEMENT</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+<!-- ======= Featured Section ======= -->
+    <section id="featured" class="featured">
+      <div class="container">
+        <div class="section-title">
+          <h2>NOUS ACCORDONS À CHAQUE PROJET L'ATTENTION PERSONNALISÉE QU'IL MÉRITE</h2>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="icon-box text-center">
+              <h3>RENOVATIONS</h3>
+              <p>Que ce soit pour la rénovation d’un bureau ou d’un espace de vente, ou même pour une remise à neuf résidentielle complète, nous nous employons à trouver les solutions répondant aux besoins de votre projet.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 mt-4 mt-lg-0">
+            <div class="icon-box text-center">
+              <h3>CONSTRUCTION RESIDENTIELLE</h3>
+              <p>Grâce à nos décennies d’expérience dans le domaine, notre équipe d’experts a le savoir-faire nécessaire pour la création de la maison de vos rêves.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 mt-4 mt-lg-0">
+            <div class="icon-box text-center">
+              <h3>CONSTRUCTION COMMERCIALE</h3>
+              <p>Nous sommes spécialisés dans l’aménagement intérieur pour restaurants et espaces de vente, ainsi que dans les ravalements de façade. Votre espace brut sera métamorphosé en une pièce exceptionnelle.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Featured Section -->
+
+ <div class="container px-4 py-5" id="hanging-icons">
+        <div class="section-title">
+          <h2>LES ÉTAPES DE VOTRE PROJET</h2>
+        </div>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-4">
+      <div class="col d-flex align-items-start">
+        <div class="icon-square bg-light text-dark d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+          <svg class="bi" width="1em" height="1em"><use xlink:href="#geo-fill" style="color: #e96b56;"/></svg>
+        </div>
+        <div>
+          <h2>VOTRE PROJET, VOS IDÉES</h2>
+
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <div class="icon-square bg-light text-dark d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+          <svg class="bi" width="1em" height="1em"><use xlink:href="#calendar3" style="color: #e96b56;"/></svg>
+        </div>
+        <div>
+          <h2>PROPOSITION ET DEVIS GRATUIT</h2>
+  
+        </div>
+      </div>
+      <div class="col d-flex align-items-start">
+        <div class="icon-square bg-light text-dark d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+          <svg class="bi" width="1em" height="1em"><use xlink:href="#tools" style="color: #e96b56;"/></svg>
+        </div>
+        <div>
+          <h2>LES TRAVAUX</h2>
+
+        </div>
+      </div>
+           <div class="col d-flex align-items-start">
+        <div class="icon-square bg-light text-dark d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+          <svg class="bi" width="1em" height="1em"><use xlink:href="#home" style="color: #e96b56;"/></svg>
+        </div>
+        <div>
+          <h2>LIVRAISON</h2>
+
+        </div>
+      </div> 
+      
+    </div>
+  </div>
+
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Témoignages</h2>
+        </div>
+
+        <div class="row">
+    {% for commentaire in commentaires %}
+          <div class="col-lg-6">
+            <div class="testimonial-item mt-4" style="height: 175px;">
+              <h3>{{commentaire.auteur}}</h3>
+              <h4>{{commentaire.createdAt|date('d/m/y')}}</h4>
+              <p>
+                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                {{commentaire.contenu|u.truncate(300,'...',false)}}
+                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+              </p>
+            </div>
+          </div>
+    {% endfor %}
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+  </main><!-- End #main -->
+{% endblock %}
