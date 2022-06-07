@@ -30,7 +30,7 @@ class ContactController extends AbstractController
             $contact = $form->getData();
             $contactService->persistContact($contact);
             $email = (new TemplatedEmail())
-            ->from(new Address('stevenessamlegion@hotmail.com', 'H.M.S RENOV'))
+            ->from(new Address('hmsrenov@hotmail.com', 'H.M.S RENOV'))
             ->to('manobalotalos@gmail.com')
             ->subject('Vous avez reçu une nouvelle demande de devis')
             ->htmlTemplate('contact/mail_devis.html.twig')
