@@ -40,7 +40,7 @@ class ProjectCrudController extends AbstractCrudController
             TextField::new('typeDeProjet'),
             TextField::new('qualiteDuMateriel')->hideOnIndex(),
             TextField::new('dureeDeProjet')->hideOnIndex(),
-            DateField::new('dateRealisation'),
+           // DateField::new('dateRealisation'),
             TextField::new('ville'),
             SlugField::new('slug')->setTargetFieldName('nom')->hideOnIndex(),
         ];
