@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity\EventSubscriber;
+namespace App\EventSubscriber;
 
 use DateTime;
 use App\Entity\User;
