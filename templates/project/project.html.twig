@@ -46,7 +46,7 @@
              ">
                 <div class="portfolio-wrap">
                 {# <img src="{{vich_uploader_asset(project ,'imageFile')}}" class="img-fluid" alt=""> #}
-                <img src="{{project.file}}" class="img-fluid" alt="" style="height: 278px; width: 416px;">
+                <img src="{{project.file}}" class="img-fluid" alt="">
                 <div class="portfolio-info">
                 <a href="{{path('app_project_details', {'slug': project.slug})}}"><h4> {{project.nom}}</h4></a>
                     <p>{{project.createdAt|date('d/m/y')}} </p>
