@@ -30,11 +30,13 @@
                 <div class="swiper-wrapper align-items-center">
 
                     <div class="swiper-slide">
-                    <img src="{{vich_uploader_asset(project ,'imageFile')}}" alt="">    
+                    {# <img src="{{vich_uploader_asset(project ,'imageFile')}}" alt="">     #}
+                    <img src="{{project.file}}" alt="">    
                     </div>
                     
                     <div class="swiper-slide">
-                    <img src="{{vich_uploader_asset(project ,'imageFile2')}}" alt="">    
+                    {# <img src="{{vich_uploader_asset(project ,'imageFile2')}}" alt="">     #}
+                    <img src="{{project.file2}}" alt="">    
                     </div>
                     
                 </div>
