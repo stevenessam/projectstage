@@ -28,12 +28,7 @@ class ProjectCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-
-        $imageFile1= TextField::new('imageFile')->setFormType(VichImageType::class)->setFormTypeOption('allow_delete', false);
-        $image1=ImageField::new('file')->setBasePath('/uploads/projects/');
-        $imageFile2= TextField::new('imageFile2')->setFormType(VichImageType::class)->setFormTypeOption('allow_delete', false);
-        $image2=ImageField::new('file2')->setBasePath('/uploads/projects/');
-        $fields=[
+        return [
             TextField::new('nom'),
             AssociationField::new('categorie')->hideOnIndex(),
             TextareaField::new('description')->hideOnIndex(),
@@ -42,17 +37,42 @@ class ProjectCrudController extends AbstractCrudController
             TextField::new('dureeDeProjet')->hideOnIndex(),
             DateField::new('dateRealisation'),
             TextField::new('ville'),
+            TextField::new('file'),
+            TextField::new('file2'),
             SlugField::new('slug')->setTargetFieldName('nom')->hideOnIndex(),
         ];
-        if($pageName==Crud::PAGE_INDEX || $pageName == Crud::PAGE_DETAIL){
-             $fields[]=$image1;
-             $fields[]=$image2;
-        }else{
-             $fields[]=$imageFile1;
-             $fields[]=$imageFile2;
-        }
-        return $fields;
     }
+
+
+
+
+    // public function configureFields(string $pageName): iterable
+    // {
+
+    //     $imageFile1= TextField::new('imageFile')->setFormType(VichImageType::class)->setFormTypeOption('allow_delete', false);
+    //     $image1=ImageField::new('file')->setBasePath('/uploads/projects/');
+    //     $imageFile2= TextField::new('imageFile2')->setFormType(VichImageType::class)->setFormTypeOption('allow_delete', false);
+    //     $image2=ImageField::new('file2')->setBasePath('/uploads/projects/');
+    //     $fields=[
+    //         TextField::new('nom'),
+    //         AssociationField::new('categorie')->hideOnIndex(),
+    //         TextareaField::new('description')->hideOnIndex(),
+    //         TextField::new('typeDeProjet'),
+    //         TextField::new('qualiteDuMateriel')->hideOnIndex(),
+    //         TextField::new('dureeDeProjet')->hideOnIndex(),
+    //         DateField::new('dateRealisation'),
+    //         TextField::new('ville'),
+    //         SlugField::new('slug')->setTargetFieldName('nom')->hideOnIndex(),
+    //     ];
+    //     if($pageName==Crud::PAGE_INDEX || $pageName == Crud::PAGE_DETAIL){
+    //          $fields[]=$image1;
+    //          $fields[]=$image2;
+    //     }else{
+    //          $fields[]=$imageFile1;
+    //          $fields[]=$imageFile2;
+    //     }
+    //     return $fields;
+    // }
 
 
 
