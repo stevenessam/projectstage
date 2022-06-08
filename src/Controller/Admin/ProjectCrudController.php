@@ -6,6 +6,7 @@ use DateTime;
 use App\Entity\Project;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Security;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
@@ -31,14 +32,14 @@ class ProjectCrudController extends AbstractCrudController
         return [
             TextField::new('nom'),
             AssociationField::new('categorie')->hideOnIndex(),
-            TextareaField::new('description')->hideOnIndex(),
+            TextareaField::new('description')->setFormType(CKEditorType::class)->hideOnIndex(),
             TextField::new('typeDeProjet'),
             TextField::new('qualiteDuMateriel')->hideOnIndex(),
             TextField::new('dureeDeProjet')->hideOnIndex(),
             DateField::new('dateRealisation'),
             TextField::new('ville'),
-            TextField::new('file'),
-            TextField::new('file2'),
+            TextField::new('file')->hideOnIndex(),
+            TextField::new('file2')->hideOnIndex(),
             SlugField::new('slug')->setTargetFieldName('nom')->hideOnIndex(),
         ];
     }
@@ -107,7 +108,8 @@ class ProjectCrudController extends AbstractCrudController
     return$crud
         ->setDefaultSort(['createdAt'=>'DESC'])
         ->setPageTitle ( 'index', 'Projets')
-        ->setPageTitle ( 'new', 'Editer les Projets' );
+        ->setPageTitle ( 'new', 'Editer les Projets' )
+        ->addFormTheme('@FOSCKEditor/Form/ckeditor_widget.html.twig');
     }
     
 
