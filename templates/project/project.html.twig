@@ -45,7 +45,8 @@
               {% endfor %}
              ">
                 <div class="portfolio-wrap">
-                <img src="{{vich_uploader_asset(project ,'imageFile')}}" class="img-fluid" alt="">
+                {# <img src="{{vich_uploader_asset(project ,'imageFile')}}" class="img-fluid" alt=""> #}
+                <img src="{{project.file}}" class="img-fluid" alt="">
                 <div class="portfolio-info">
                     <h4> {{project.nom}}</h4>
                     <p>{{project.createdAt|date('d/m/y')}} </p>
