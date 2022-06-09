@@ -15,6 +15,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
@@ -31,7 +32,7 @@ class ProjectCrudController extends AbstractCrudController
         return [
             TextField::new('nom'),
             AssociationField::new('categorie')->hideOnIndex(),
-            TextareaField::new('description')->hideOnIndex(),
+            TextEditorField::new('description')->hideOnIndex(),
             TextField::new('typeDeProjet'),
             TextField::new('qualiteDuMateriel')->hideOnIndex(),
             TextField::new('dureeDeProjet')->hideOnIndex(),
