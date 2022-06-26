@@ -25,7 +25,7 @@ class CommentaireCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            AssociationField::new('blogpost'),
+            AssociationField::new('blogpost')->hideOnIndex(),
             AssociationField::new('project'),
             TextField::new('auteur')->hideOnForm(),
             EmailField::new('email')->onlyOnForms(),
