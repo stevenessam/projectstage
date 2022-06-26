@@ -40,3 +40,6 @@ composer require knplabs/knp-paginator-bundle
 
 ##Easy admin
 composer require easycorp/easyadmin-bundle
+
+##Heroku
+git push heroku main
