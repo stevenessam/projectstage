@@ -38,8 +38,8 @@ class ProjectCrudController extends AbstractCrudController
             TextField::new('dureeDeProjet')->hideOnIndex(),
             DateField::new('dateRealisation'),
             TextField::new('ville'),
-            TextField::new('file'),
-            TextField::new('file2'),
+            TextField::new('file')->hideOnIndex(),
+            TextField::new('file2')->hideOnIndex(),
             SlugField::new('slug')->setTargetFieldName('nom')->hideOnIndex(),
         ];
     }
